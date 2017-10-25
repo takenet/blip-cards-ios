@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'BlipCards'
   s.version          = '0.0.1'
-  s.summary          = 'A short description of BlipCards.'
+  s.summary          = 'Reusable BLiP cards for your iOS app'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,12 +25,12 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Take' => 'victorb@take.net' }
-  s.source           = { :git => 'https://github.com/takenet/blip-cards-ios.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/takenet/blip-cards-ios.git', :tag => 'master' }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'BlipCards/Classes/**/*'
+  s.source_files = 'src/Blip/Blip.h'
   
   # s.resource_bundles = {
   #   'BlipCards' => ['BlipCards/Assets/*.png']
