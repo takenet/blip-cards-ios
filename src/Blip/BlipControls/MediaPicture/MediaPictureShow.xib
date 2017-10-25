@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaPictureShow">
+            <connections>
+                <outlet property="image" destination="aix-eY-n2N" id="SJi-mo-dTA"/>
+                <outlet property="scroll" destination="NQs-82-Iq0" id="MN6-36-wzD"/>
+                <outlet property="view" destination="iN0-l3-epB" id="gGi-RT-eHN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQs-82-Iq0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="AXe-tI-fQF">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <subviews>
+                                <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aix-eY-n2N" customClass="DownloadImage">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIe-dA-blD">
+                                    <rect key="frame" x="0.0" y="18" width="40" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="CuM-Yn-d2u"/>
+                                        <constraint firstAttribute="width" constant="40" id="P1g-Dv-FGO"/>
+                                    </constraints>
+                                    <state key="normal" image="back.png"/>
+                                    <connections>
+                                        <action selector="backClick" destination="-1" eventType="touchUpInside" id="n1q-cz-w0K"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="aix-eY-n2N" secondAttribute="trailing" id="1hQ-Ba-GB8"/>
+                                <constraint firstItem="aix-eY-n2N" firstAttribute="leading" secondItem="AXe-tI-fQF" secondAttribute="leading" id="9D3-jb-jDq"/>
+                                <constraint firstItem="TIe-dA-blD" firstAttribute="top" secondItem="AXe-tI-fQF" secondAttribute="top" constant="18" id="R68-Io-Yni"/>
+                                <constraint firstAttribute="bottom" secondItem="aix-eY-n2N" secondAttribute="bottom" id="UAE-gX-pB8"/>
+                                <constraint firstItem="aix-eY-n2N" firstAttribute="top" secondItem="AXe-tI-fQF" secondAttribute="top" id="YbP-lF-tRs"/>
+                                <constraint firstItem="TIe-dA-blD" firstAttribute="leading" secondItem="AXe-tI-fQF" secondAttribute="leading" id="yMo-2a-v7C"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="AXe-tI-fQF" secondAttribute="trailing" id="MaD-nj-4hf"/>
+                        <constraint firstAttribute="bottom" secondItem="AXe-tI-fQF" secondAttribute="bottom" id="Xhp-Tp-5HS"/>
+                        <constraint firstItem="AXe-tI-fQF" firstAttribute="leading" secondItem="NQs-82-Iq0" secondAttribute="leading" id="l2f-nS-dZE"/>
+                        <constraint firstItem="AXe-tI-fQF" firstAttribute="top" secondItem="NQs-82-Iq0" secondAttribute="top" id="olx-5C-RXo"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="NQs-82-Iq0" secondAttribute="trailing" id="Ei9-YW-qOo"/>
+                <constraint firstItem="NQs-82-Iq0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cWU-wr-pm7"/>
+                <constraint firstItem="NQs-82-Iq0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eNL-XY-ae7"/>
+                <constraint firstItem="AXe-tI-fQF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="msG-L3-cOS"/>
+                <constraint firstItem="AXe-tI-fQF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="qVE-b3-7M5"/>
+                <constraint firstAttribute="bottom" secondItem="NQs-82-Iq0" secondAttribute="bottom" id="xJp-m0-ILe"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="34.5" y="218.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="back.png" width="24" height="24"/>
+    </resources>
+</document>
