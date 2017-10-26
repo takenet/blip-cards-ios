@@ -30,7 +30,7 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'src/Blip/Blip.h'
+  s.source_files = 'src/Blip/**/*'
   
   # s.resource_bundles = {
   #   'BlipCards' => ['BlipCards/Assets/*.png']
