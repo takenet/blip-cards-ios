@@ -107,8 +107,8 @@
  @param name String with name
  @return Builder
  */
-- (instancetype) setChatName:(NSString*) name{
-    self.name = name;
+- (instancetype) setChatName:(NSString *) name{
+    self.name = [NSString stringWithFormat:@"%s", [name UTF8String]];
     return self;
 }
 
@@ -119,7 +119,7 @@
  @return Builder
  */
 - (instancetype) setChatDateTime:(NSString *) dateTime{
-    self.dateTime = dateTime;
+    self.dateTime = [NSString stringWithFormat:@"%s", [dateTime UTF8String]];
     return self;
 }
 
