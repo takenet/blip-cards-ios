@@ -29,6 +29,12 @@
 
 @synthesize parent;
 
+/**
+ Set the card to be displayed on the left side of the parent
+
+ @param parent Parent UIView
+ @return Builder
+ */
 + (Builder*) left: (UIView *) parent{
     Builder *b = [[Builder alloc] init];
     b.parent = parent;
@@ -36,6 +42,12 @@
     return b;
 }
 
+/**
+ Set the card to be displayed on the right side of the parent
+ 
+ @param parent Parent UIView
+ @return Builder
+ */
 + (Builder*) right: (UIView *) parent{
     Builder *b = [[Builder alloc] init];
     b.parent = parent;
@@ -43,6 +55,12 @@
     return b;
 }
 
+/**
+ Set the card to be displayed on the middle of the parent
+ 
+ @param parent Parent UIView
+ @return Builder
+ */
 + (Builder*) withoutSide: (UIView *) parent{
     Builder *b = [[Builder alloc] init];
     b.parent = parent;
@@ -50,31 +68,66 @@
     return b;
 }
 
+/**
+ Set the message JSON used to create the card
+
+ @param value Dictionary conteining the message JSON
+ @return Builder
+ */
 - (instancetype) setDocument:(NSDictionary*) value{
     self.value = value;
     return self;
 }
 
+/**
+ Set the controller that will be card
+
+ @param controller Controller that will contain the card
+ @return Builder
+ */
 - (instancetype) setViewController:(UIViewController*) controller{
     self.controller = controller;
     return self;
 }
 
+/**
+ Set the message Document used to create the card
+
+ @param value Document conteining the message JSON
+ @return Builder
+ */
 - (instancetype) setDocumentValue:(Document*) value{
     self.doc = value;
     return self;
 }
 
+/**
+ Set the name that will be displayed on the card
+
+ @param name String with name
+ @return Builder
+ */
 - (instancetype) setChatName:(NSString*) name{
     self.name = name;
     return self;
 }
 
-- (instancetype) setChatDateTime:(NSString *)dateTime{
+/**
+ Set the dateTime that will be displayed with the card
+
+ @param dateTime String with the DateTime
+ @return Builder
+ */
+- (instancetype) setChatDateTime:(NSString *) dateTime{
     self.dateTime = dateTime;
     return self;
 }
 
+/**
+ Build the card with the setted paramiters
+
+ @return UIView with the card
+ */
 - (UIView*) build{
     
     NSString *type = [_value objectForKey:@"type"];
@@ -113,6 +166,11 @@
     
 }
 
+/**
+ Create a Location Card from the self.value Dictionary
+
+ @return UIView with the card
+ */
 - (UIView*) createLocation {
     
     Document *document = [[Document alloc] init];
@@ -137,6 +195,11 @@
     return v;
 }
 
+/**
+ Create a MediaLink Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createMediaLink{
     
     Document *document = [[Document alloc] init];
@@ -180,11 +243,21 @@
     }
 }
 
+/**
+ Create a ChatState from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createChatState{
     ChatState *v = [[ChatState alloc] init:parent];
     return v;
 }
 
+/**
+ Create the QuickReply itens from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (NSArray*) buildItens{
     
     NSString *type = [_value objectForKey:@"type"];
@@ -199,6 +272,11 @@
     
 }
 
+/**
+ Create a Quick Reply Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (NSArray*) createQuickReply{
     
     Document *document = [[Document alloc] init];
@@ -237,6 +315,11 @@
     return itens;
 }
 
+/**
+ Create a WebLink Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createWebLink{
     
     Document *document = [[Document alloc] init];
@@ -260,6 +343,11 @@
     return v;
 }
 
+/**
+ Create a Text Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createText{
     
     Document *document = [[Document alloc] init];
@@ -282,6 +370,11 @@
     return v;
 }
 
+/**
+ Create a Carousel Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createCarousel {
     
     Carousel *v;
@@ -358,6 +451,11 @@
     
 }
 
+/**
+ Create a Menu Multimedia Card from the self.value Dictionary
+ 
+ @return UIView with the card
+ */
 - (UIView*) createMenuMultimedia{
     
     MenuMultimedia *v;

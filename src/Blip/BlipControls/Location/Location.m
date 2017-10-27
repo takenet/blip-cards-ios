@@ -156,7 +156,7 @@
     
     _picture.url = url;
     
-    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    // CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
     CGFloat height = 367;
     
