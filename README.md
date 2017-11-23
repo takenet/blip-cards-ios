@@ -36,11 +36,11 @@ To create a card of any type you need to have a *UIView* ready to display it.
 Once this is done, you can use the class `BlipCards` to return a builder for the card.
 
 Using the `BlipCard` object, you have to specify the side where the card shoud be displayed using the methods `left`, `right` and `withoutSide` passing the conteiner view.
-Eg: 
+Eg:
 ```obj-c
 Builder *b = [[[BlipCard alloc] init] left: myConteiner]
 ```
-Once the `Builder` object is set, now you have to set the message document with ``setDocument: myDictionary``. 
+Once the `Builder` object is set, now you have to set the message document with ``setDocument: myDictionary``.
 
 After that there are some customizations that can be done before building your card, like add a sender name with ``setChatName:@"Sender"]`` or define a the delegate for selection on a Menu with `` builder.menuDelegate = self;``.
 
@@ -58,7 +58,7 @@ Sending a chat state:
 **Objective-C**
 ```obj-c
 NSString *message = @"{\"to\":\"104222@telegram.gw.msging.net\",\"type\":\"application/vnd.lime.chatstate+json\",\"content\": {\"state\": \"composing\"}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -87,14 +87,14 @@ NSString *message = @"{\"id\":\"1\",\"to\":\"128271320123982@messenger.gw.msging
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
-NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData 
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
                         options:NSJSONReadingMutableContainers
                         error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init] left:_content] setChatName:@"Text Card"] setChatDateTime:@"15:30"] setDocument:json];
 
-// Add item to view    
+// Add item to view
 [self addItem: [b build]];
 ```
 The result is this:
@@ -107,7 +107,7 @@ Sending a received audio card, with the sender's name and the time of the messag
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"audio/mp3\",\"uri\": \"http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3\",\"size\": 3124123}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -133,7 +133,7 @@ Sending a received video card, with the sender's name and the time of the messag
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"video/mp4\",\"uri\": \"http://www.onirikal.com/videos/mp4/nestlegold.mp4\",\"size\": 3124123,\"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\"previewType\": \"image/jpeg\"}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -159,7 +159,7 @@ Sending a received image card, with the sender's name and the time of the messag
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"1\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"title\": \"Cat\",\"text\": \"Here is a cat image for you!\",\"type\": \"image/jpeg\",\"uri\": \"http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg\",\"aspectRatio\": \"1:1\",\"size\": 227791,\"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\"previewType\": \"image/jpeg\"}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -185,7 +185,7 @@ Sending a received document card, with the sender's name and the time of the mes
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"application/pdf\",\"uri\": \"https://s3-sa-east-1.amazonaws.com/i.imgtake.takenet.com.br/d6ztq/d6ztq.pdf\",\"size\": 3124123,\"text\": \"Document PDF\"}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -211,7 +211,7 @@ Sending a received location card, with the sender's name and the time of the mes
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"1\",\"to\": \"1042221589186385@messenger.gw.msging.net\",\"type\": \"application/vnd.lime.location+json\",\"content\": {\"latitude\": -19.918899,\"longitude\": -43.959275,\"altitude\": 853,\"text\": \"Take's place\"}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -236,8 +236,8 @@ Sending a received weblink card, with the sender's name and the time of the mess
 
 **Objective-C**
 ```obj-c
- NSString *message = @"{\"id\": \"1\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.web-link+json\",\"content\": {\"uri\": \"http://www.uol.com.br\",\"target\": \"self\",\"text\": \"Segue documentação do web-link\"}}"; 
-    
+ NSString *message = @"{\"id\": \"1\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.web-link+json\",\"content\": {\"uri\": \"http://www.uol.com.br\",\"target\": \"self\",\"text\": \"Segue documentação do web-link\"}}";
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -263,7 +263,7 @@ Sending a received multimedia menu card, with the sender's name and the time of 
 **Objective-C**
 ```obj-c
  NSString *message = @"{\"id\": \"1\",\"to\": \"1042221589186385@messenger.gw.msging.net\",\"type\": \"application/vnd.lime.document-select+json\",\"content\": {\"header\": {\"type\": \"application/vnd.lime.media-link+json\",\"value\": {\"title\": \"Preench. de Proposta\",\"text\": \"Tire dúvidas sobre, proposta, código SMS, modelo do veículo, entre outros. \",\"type\": \"image/jpeg\",\"uri\": \"http://files.lojas.club/blip.png\",\"aspectRatio\": \"1:1\"}},\"options\": [{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 1\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}},{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 2\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}},{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 3\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}}]}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -289,7 +289,7 @@ Sending a sent quick reply, with sender's name:
 **Objective-C**
 ```obj-c
 NSString *message = @"{\"id\":\"311F87C0-F938-4FF3-991A-7C5AEF7771A5\",\"to\":\"1042221589186385@messenger.gw.msging.net\",\"type\":\"application/vnd.lime.select+json\",\"content\":{\"text\":\"Escolha uma opção\",\"options\":[{\"text\":\"Primeira opção\"},{\"order\":2,\"text\":\"Segunda opção\"},{\"order\":3,\"text\":\"Terceira opção\",\"type\":\"application/json\",\"value\":{\"key1\":\"value1\",\"key2\":2}}]}}";
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -317,12 +317,12 @@ The result should be a card like this:
 <img src="./docs/resources/quickReply.jpg" alt="Quick Reply" style="width: 400px;"/>
 
 ### Carousel
-Sending a received carousel without name and time: 
+Sending a received carousel without name and time:
 
 **Objective-C**
 ```obj-c
 NSString *message = @"{\"id\":\"5\",\"to\":\"1042221589186385@messenger.gw.msging.net\",\"type\":\"application/vnd.lime.collection+json\",\"content\":{\"itemType\":\"application/vnd.lime.document-select+json\",\"items\": [{\"header\":{\"type\":\"application/vnd.lime.media-link+json\",\"value\":{\"title\":\"Preench. de Proposta 1\",\"text\":\"Tire dúvidas sobre, proposta, código SMS, modelo de veículo, entre outros\",\"type\":\"image/jpeg\",\"uri\":\"http://files.lojas.club/blip.png\"}},\"options\": [{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 1\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key1\":\"value1\",\"key2\": 2}}},{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 2\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key1\":\"value1\",\"key2\": 2}}}]},{\"header\":{\"type\":\"application/vnd.lime.media-link+json\",\"value\":{\"title\":\"Preench. de Proposta 2\",\"text\":\"Tire dúvidas sobre, proposta, código SMS, modelo de veículo, entre outros\",\"type\":\"image/jpeg\",\"uri\":\"http://files.lojas.club/blip2.png\"}},\"options\": [{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 1\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key3\":\"value3\",\"key4\": 4}}},{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 2\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key5\":\"value5\",\"key6\": 6}}}]},{\"header\":{\"type\":\"application/vnd.lime.media-link+json\",\"value\":{\"title\":\"Preench. de Proposta 1\",\"text\":\"Tire dúvidas sobre, proposta, código SMS, modelo de veículo, entre outros\",\"type\":\"image/jpeg\",\"uri\":\"http://files.lojas.club/blip.png\"}},\"options\": [{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 1\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key1\":\"value1\",\"key2\": 2}}},{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 2\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key1\":\"value1\",\"key2\": 2}}}]},{\"header\":{\"type\":\"application/vnd.lime.media-link+json\",\"value\":{\"title\":\"Preench. de Proposta 2\",\"text\":\"Tire dúvidas sobre, proposta, código SMS, modelo de veículo, entre outros\",\"type\":\"image/jpeg\",\"uri\":\"http://files.lojas.club/blip2.png\"}},\"options\": [{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 1\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key3\":\"value3\",\"key4\": 4}}},{\"label\":{\"type\":\"text/plain\",\"value\":\"Opção 2\"},\"value\":{\"type\":\"application/json\",\"value\":{\"key5\":\"value5\",\"key6\": 6}}}]}]}}";;
-    
+
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
