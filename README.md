@@ -51,6 +51,32 @@ UIView *v = [b build];
 ```
 
 ## Examples
+
+### ChatState
+Sending a chat state:
+
+**Objective-C**
+```obj-c
+NSString *message = @"{\"to\":\"104222@telegram.gw.msging.net\",\"type\":\"application/vnd.lime.chatstate+json\",\"content\": {\"state\": \"composing\"}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[BlipCard alloc] init] left:_content] setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/chatstate.jpg" alt="ChatState" style="width: 400px;"/>
+
+
 ### Text Card
 Sending a received text card, with the sender's name and the time of the message:
 
@@ -75,9 +101,190 @@ The result is this:
 
 <img src="./docs/resources/text.jpg" alt="Text card" style="width: 400px;"/>
 
+### Media Card (Audio)
+Sending a received audio card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"audio/mp3\",\"uri\": \"http://blaamandagjazzband.dk/jazz/mp3/basin_street_blues.mp3\",\"size\": 3124123}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/audio.jpg" alt="Text card" style="width: 400px;"/>
+
+### Media Card (Video)
+Sending a received video card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"video/mp4\",\"uri\": \"http://www.onirikal.com/videos/mp4/nestlegold.mp4\",\"size\": 3124123,\"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\"previewType\": \"image/jpeg\"}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/video.jpg" alt="Text card" style="width: 400px;"/>
+
+### Media Card (Image)
+Sending a received image card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"1\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"title\": \"Cat\",\"text\": \"Here is a cat image for you!\",\"type\": \"image/jpeg\",\"uri\": \"http://2.bp.blogspot.com/-pATX0YgNSFs/VP-82AQKcuI/AAAAAAAALSU/Vet9e7Qsjjw/s1600/Cat-hd-wallpapers.jpg\",\"aspectRatio\": \"1:1\",\"size\": 227791,\"previewUri\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS8qkelB28RstsNxLi7gbrwCLsBVmobPjb5IrwKJSuqSnGX4IzX\",\"previewType\": \"image/jpeg\"}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/image.jpg" alt="Text card" style="width: 400px;"/>
+
+### Media Card (Document)
+Sending a received document card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"2\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.media-link+json\",\"content\": {\"type\": \"application/pdf\",\"uri\": \"https://s3-sa-east-1.amazonaws.com/i.imgtake.takenet.com.br/d6ztq/d6ztq.pdf\",\"size\": 3124123,\"text\": \"Document PDF\"}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/document.jpg" alt="Text card" style="width: 400px;"/>
+
+### Location Card
+Sending a received location card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"1\",\"to\": \"1042221589186385@messenger.gw.msging.net\",\"type\": \"application/vnd.lime.location+json\",\"content\": {\"latitude\": -19.918899,\"longitude\": -43.959275,\"altitude\": 853,\"text\": \"Take's place\"}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/location.jpg" alt="Text card" style="width: 400px;"/>
+
+### Web Link Card
+Sending a received weblink card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"1\",\"to\": \"553199991111@0mn.io\",\"type\": \"application/vnd.lime.web-link+json\",\"content\": {\"uri\": \"http://www.uol.com.br\",\"target\": \"self\",\"text\": \"Segue documentação do web-link\"}}"; 
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/weblink.jpg" alt="Text card" style="width: 400px;"/>
+
+### Multimedia Menu Card
+Sending a received multimedia menu card, with the sender's name and the time of the message:
+
+**Objective-C**
+```obj-c
+ NSString *message = @"{\"id\": \"1\",\"to\": \"1042221589186385@messenger.gw.msging.net\",\"type\": \"application/vnd.lime.document-select+json\",\"content\": {\"header\": {\"type\": \"application/vnd.lime.media-link+json\",\"value\": {\"title\": \"Preench. de Proposta\",\"text\": \"Tire dúvidas sobre, proposta, código SMS, modelo do veículo, entre outros. \",\"type\": \"image/jpeg\",\"uri\": \"http://files.lojas.club/blip.png\",\"aspectRatio\": \"1:1\"}},\"options\": [{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 1\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}},{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 2\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}},{\"label\": {\"type\": \"text/plain\",\"value\": \"Item 3\"},\"value\": {\"type\": \"application/json\",\"value\": {\"action\": \"show-items\"}}}]}}";
+    
+// Get a NSDictionary from the JSON
+NSError *jsonError;
+NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+														options:NSJSONReadingMutableContainers
+														error:&jsonError];
+
+// Build the card from the NSDictionary
+Builder *b = [[[[[[BlipCard alloc] init]
+					left:_content] setChatName:@"Blip Teste"] setChatDateTime:@"15:30"]
+				setDocument:json];
+
+// Add item to view
+[self addItem: [b build]];
+```
+The result is this:
+
+<img src="./docs/resources/multimediaMenu.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Quick Reply
-Sending a sent quick reply, with the my name:
+Sending a sent quick reply, with sender's name:
 
 **Objective-C**
 ```obj-c
