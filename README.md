@@ -1,6 +1,6 @@
 # Blip Cards for iOS
 
-SDK to easily get BLiP Cards to use on your iOS app. For more information see BLiP portal and BLiP documentation. See supported versions here.
+SDK to easily add BLiP Cards on your iOS app.
 
 ## Installation
 ----------------
@@ -53,7 +53,7 @@ UIView *v = [b build];
 ## Examples
 
 ### ChatState
-Sending a chat state:
+Adding a chat state:
 
 **Objective-C**
 ```obj-c
@@ -63,8 +63,7 @@ NSString *message = @"{\"to\":\"104222@telegram.gw.msging.net\",\"type\":\"appli
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers													error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[BlipCard alloc] init] left:_content] setDocument:json];
@@ -78,7 +77,7 @@ The result is this:
 
 
 ### Text Card
-Sending a received text card, with the sender's name and the time of the message:
+Adding a received text card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -102,7 +101,7 @@ The result is this:
 <img src="./docs/resources/text.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Media Card (Audio)
-Sending a received audio card, with the sender's name and the time of the message:
+Adding a received audio card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -111,9 +110,7 @@ Sending a received audio card, with the sender's name and the time of the messag
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
-NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData												options:NSJSONReadingMutableContainers													error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -128,7 +125,7 @@ The result is this:
 <img src="./docs/resources/audio.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Media Card (Video)
-Sending a received video card, with the sender's name and the time of the message:
+Adding a received video card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -137,9 +134,8 @@ Sending a received video card, with the sender's name and the time of the messag
 // Get a NSDictionary from the JSON
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
-NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData												options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -154,7 +150,7 @@ The result is this:
 <img src="./docs/resources/video.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Media Card (Image)
-Sending a received image card, with the sender's name and the time of the message:
+Adding a received image card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -164,8 +160,8 @@ Sending a received image card, with the sender's name and the time of the messag
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -180,7 +176,7 @@ The result is this:
 <img src="./docs/resources/image.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Media Card (Document)
-Sending a received document card, with the sender's name and the time of the message:
+Adding a received document card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -190,8 +186,8 @@ Sending a received document card, with the sender's name and the time of the mes
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -206,7 +202,7 @@ The result is this:
 <img src="./docs/resources/document.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Location Card
-Sending a received location card, with the sender's name and the time of the message:
+Adding a received location card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -216,8 +212,8 @@ Sending a received location card, with the sender's name and the time of the mes
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -232,7 +228,7 @@ The result is this:
 <img src="./docs/resources/location.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Web Link Card
-Sending a received weblink card, with the sender's name and the time of the message:
+Adding a received weblink card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -242,8 +238,8 @@ Sending a received weblink card, with the sender's name and the time of the mess
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -258,7 +254,7 @@ The result is this:
 <img src="./docs/resources/weblink.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Multimedia Menu Card
-Sending a received multimedia menu card, with the sender's name and the time of the message:
+Adding a received multimedia menu card, with the sender's name and the time of the message:
 
 **Objective-C**
 ```obj-c
@@ -268,8 +264,8 @@ Sending a received multimedia menu card, with the sender's name and the time of 
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-														options:NSJSONReadingMutableContainers
-														error:&jsonError];
+			options:NSJSONReadingMutableContainers
+			error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[[BlipCard alloc] init]
@@ -284,7 +280,7 @@ The result is this:
 <img src="./docs/resources/multimediaMenu.jpg" alt="Text card" style="width: 400px;"/>
 
 ### Quick Reply
-Sending a sent quick reply, with sender's name:
+Adding a sent quick reply, with sender's name:
 
 **Objective-C**
 ```obj-c
@@ -294,8 +290,8 @@ NSString *message = @"{\"id\":\"311F87C0-F938-4FF3-991A-7C5AEF7771A5\",\"to\":\"
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                        options:NSJSONReadingMutableContainers
-                                                        error:&jsonError];
+                 	options:NSJSONReadingMutableContainers
+                        error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[BlipCard alloc] init] right:_content] setChatName:@"Quick Reply"] setDocument:json];
@@ -317,7 +313,7 @@ The result should be a card like this:
 <img src="./docs/resources/quickReply.jpg" alt="Quick Reply" style="width: 400px;"/>
 
 ### Carousel
-Sending a received carousel without name and time:
+Adding a received carousel without name and time:
 
 **Objective-C**
 ```obj-c
@@ -327,8 +323,8 @@ NSString *message = @"{\"id\":\"5\",\"to\":\"1042221589186385@messenger.gw.msgin
 NSError *jsonError;
 NSData *objectData = [message dataUsingEncoding:NSUTF8StringEncoding];
 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                        options:NSJSONReadingMutableContainers
-                                                        error:&jsonError];
+	             	options:NSJSONReadingMutableContainers
+                        error:&jsonError];
 
 // Build the card from the NSDictionary
 Builder *b = [[[[[BlipCard alloc] init] left:_content] setChatName:@"Carousel"] setDocument:json];
