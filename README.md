@@ -335,3 +335,12 @@ Builder *b = [[[[[BlipCard alloc] init] left:_content] setChatName:@"Carousel"] 
 The result is this:
 
 <img src="./docs/resources/carousel.jpg" alt="Carousel" style="width: 400px;"/>
+
+## Guidelines
+
+Good practices for Images on BLiP Cards Android.
+
+Best dimensions for good user experience
+
+min-height = 190px
+min-width = 375px
