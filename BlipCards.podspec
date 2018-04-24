@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BlipCards'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Reusable BLiP cards for your iOS app'
 
 # This description is used to generate tags and improve search results.
@@ -30,7 +30,8 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'src/Blip/**/*'
+  s.source_files = 'src/Blip/**/*.{swift,h,m}'
+  s.resource = 'src/Blip/**/*.{plist,xib,png}'
   
   # s.resource_bundles = {
   #   'BlipCards' => ['BlipCards/Assets/*.png']
