@@ -50,7 +50,7 @@
     [self addSubview:_contentView];
 }
 
-- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale{
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale{
     _webView.scrollView.maximumZoomScale = 20; // set similar to previous.
 }
 
